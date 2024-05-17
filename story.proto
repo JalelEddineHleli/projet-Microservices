@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package story;
+
+
+message Story {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+
+}
+
+message GetStoryRequest {
+  string story_id = 1;
+}
+
+message GetStoryResponse {
+  Story story = 1;
+}
+
+message SearchStorysRequest {
+  string query = 1;
+}
+
+message SearchStorysResponse {
+  repeated Story storys = 1;
+}
+
+service StoryService {
+  rpc GetStory(GetStoryRequest) returns (GetStoryResponse);
+  rpc SearchStorys(SearchStorysRequest) returns (SearchStorysResponse);
+
+}
